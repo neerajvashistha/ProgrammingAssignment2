@@ -9,13 +9,13 @@
 
 makeCacheMatrix <- function(x = matrix()) {
  mtrx <- NULL
-    getMatrix <- function() x											## returns the stored matrix
-    setMatrix <- function(m) {											## store a matrix
+    getMatrix <- function() x						## returns the stored matrix
+    setMatrix <- function(m) {						## store a matrix
         x <<- m                
         mtrx <<- NULL
     }
     setImatrix <- function(Imatrix) mtrx <<- Imatrix 					## cache the given argument 
-    getImatrix <- function() mtrx 										## get the cached value
+    getImatrix <- function() mtrx 					## get the cached value
 
     # Creating a List, to return functions as an R object
     list(setMatrix = setMatrix, getMatrix = getMatrix, setImatrix=setImatrix, getImatrix=getImatrix)
@@ -30,7 +30,7 @@ makeCacheMatrix <- function(x = matrix()) {
 
 cacheSolve <- function(x, ...) {
  
- Imtrx <- x$getImatrix()												## Returning inverse of x matrix.
+ Imtrx <- x$getImatrix()							## Returning inverse of x matrix.
     if(!is.null(Imtrx)){
         message("Cached data found")
         message("Getting result... Done.")
@@ -38,8 +38,8 @@ cacheSolve <- function(x, ...) {
     }
     else {
         message("Cached data not found")
-        data <- x$getMatrix()											## obtaining matrix from 'x'
-        Imtrx <- solve(data) 											## finding inverse matrix
+        data <- x$getMatrix()						## obtaining matrix from 'x'
+        Imtrx <- solve(data) 						## finding inverse matrix
         message("Calculating inverse matrix...")
         x$setImatrix(Imtrx) 												
         message("Done.")
