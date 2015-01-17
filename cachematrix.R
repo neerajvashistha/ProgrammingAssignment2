@@ -30,7 +30,7 @@ makeCacheMatrix <- function(x = matrix()) {
 
 cacheSolve <- function(x, ...) {
  
- Imtrx <- x$getImatrix()												## Returning inverse of x matrix
+ Imtrx <- x$getImatrix()												## Returning inverse of x matrix.
     if(!is.null(Imtrx)){
         message("Cached data found")
         message("Getting result... Done.")
